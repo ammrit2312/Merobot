@@ -77,7 +77,7 @@ def send_images(object, generate):
             label_key = all_parts[i]
             print("This is the labels", labels[0])
             print("This is the labels\n\n", label_key-1)
-            labels[0][label_key-1] = np.array([1.0]).astype(float)
+            labels[label_key-1] = np.array([1.0]).astype(float)
     labels = labels.reshape(1,24,1)
     rectangle_coords1, labels_used , bb= rectangle_call(object,labels,ind = 2)
     bb =  np.asarray(bb)
