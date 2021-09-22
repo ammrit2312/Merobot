@@ -70,8 +70,9 @@ def send_images(object, generate):
         data = request.get_json(force=True)
         parts = data['parts']
         all_parts = get_all_parts_dictionary(object)
-        for _ in range(default_size):
-            labels.append(np.array([0.0]).astype(float))
+        # for _ in range(default_size):
+        #     labels.append(np.array([0.0]).astype(float))
+        labels = [np.array([0.0]).astype(float) for i in range(default_size)]
         for i in parts:
             label_key = all_parts[i]
             print("This is the labels", labels[0])
