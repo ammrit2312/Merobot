@@ -28,6 +28,7 @@ remaining_parts = []
 masked_coord1 = []
 labels= []
 
+
 @app.route("/")
 def home():
     return "<h1>Server Working</h1>"
@@ -86,6 +87,20 @@ def send_images(object, generate):
     remaining_parts = get_remaining_parts(object, labels_used)
     model_3 = subprocess.call('sh ./code/code/Inference/c-spade_test.sh', shell=True)
     white_image(object)
+
+    out_labels_used = []
+    out_remianing_parts = []
+    for i in labels_used:
+        dict = {}
+        dict['part'] = i
+        dict['full_part'] = i
+        dict['color'] = next(item for item in rectangle_coords1 if item["label"] == i)
+        out_labels_used.append(dict)
+    for i in remaining_parts:
+        dict = {}
+        dict['part'] = i
+        dict['full_part'] = i
+        out_remianing_parts.append(dict)
     if(object in animals):
         return{
             'images': [
@@ -265,6 +280,19 @@ def update_coords(process):
         model_3 = subprocess.call('sh ./code/code/Inference/c-spade_test.sh', shell=True)
         white_image(object_name)
     
+    out_labels_used = []
+    out_remianing_parts = []
+    for i in labels_used:
+        dict = {}
+        dict['part'] = i
+        dict['full_part'] = i
+        dict['color'] = next(item for item in rectangle_coords1 if item["label"] == i)
+        out_labels_used.append(dict)
+    for i in remaining_parts:
+        dict = {}
+        dict['part'] = i
+        dict['full_part'] = i
+        out_remianing_parts.append(dict)
     return{
         'images': [
             "data:image/png;base64, " + get_response_image('rectangle.png'),
@@ -273,8 +301,8 @@ def update_coords(process):
         ],
         'rectangle': rectangle_coords1,
         'masked': masked_coord1,
-        'labels_used': labels_used,
-        'remaining_parts': remaining_parts
+        'labels_used': out_labels_used,
+        'remaining_parts': out_remianing_parts,
     }
 
 

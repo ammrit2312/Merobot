@@ -957,7 +957,7 @@ def rectangle_call(object_name,labelss,ind):
             #   plt.axis('off')
             #   plt.imshow(bigger)
             #   plt.savefig('rectangle.png')
-              print("Coords",coords)
+            #   print("Coords",coords)
             #   fig, ax = plt.subplots()
             #   ax.set_xlim(0, 2)
             #   ax.set_ylim(0, 2)
