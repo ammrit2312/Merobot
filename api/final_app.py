@@ -53,6 +53,13 @@ def send_images(object, generate):
     global labels_used
     global remaining_parts
     global labels
+    #reinitialize the global varaible
+    object_name = ''
+    rectangle_coords1 = []
+    labels_used = []
+    remaining_parts = []
+    masked_coord1 = []
+    labels= []
     object = object.lower()
     object_name = object
     if(generate.lower() == 'random'):
