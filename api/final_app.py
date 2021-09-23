@@ -110,8 +110,8 @@ def send_images(object, generate):
             ],
             'rectangle': rectangle_coords1,
             'masked': masked_coord1,
-            'labels_used': labels_used,
-            'remaining_parts': remaining_parts,
+            'labels_used': out_labels_used,
+            'remaining_parts': out_remianing_parts,
         }
     else:
         return {"images" : [], 'rectangle': [], 'masked': []}
