@@ -65,6 +65,17 @@ def send_images(object, generate):
     object_name = object
     if(generate.lower() == 'random'):
         #random generation
+        parts = ['head', 'reye', 'rear', 'torso', 'neck', 'tail', 'muzzle']
+        all_parts = get_all_parts_dictionary(object)
+        # for _ in range(default_size):
+        #     labels.append(np.array([0.0]).astype(float))
+        labels = [np.array([0.0]).astype(float) for i in range(default_size)]
+        for i in parts:
+            label_key = all_parts[i]
+            print("This is the labels", labels)
+            # print("This is the labels\n\n", label_key-1)
+            labels[label_key-1] = np.array([1.0]).astype(float)
+        labels = np.array(labels)
         labels = labels_array_generator(object)
     elif(generate.lower() == 'specific'):
         #specific generation
