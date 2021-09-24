@@ -1005,9 +1005,12 @@ def rectangle_call(object_name,labelss,ind):
       labels_main = part_labels[object_name]
       values = list(labels_main.values())
       keys = list(labels_main.keys())
-      for iout in range(len(labelss[0])):
-        if(labelss[0][iout][0] == 1):
-          position = values.index(iout+1) #(24-len(labels_passed))
+    #   for iout in range(len(labelss[0])):
+    #     if(labelss[0][iout][0] == 1):
+    #       position = values.index(iout+1) #(24-len(labels_passed))
+    #       labels_text.append(keys[position])
+      for i_read in range(len(ii_list)):
+          position = values.index(ii_list[i_read])
           labels_text.append(keys[position])
       print(labels_text)
     #   scale_factor = (coords[len(coords)-1][2] - coords[0][0])/coords[len(coords)-1][2]
@@ -1017,7 +1020,7 @@ def rectangle_call(object_name,labelss,ind):
         width = abs(coords[i][0] - coords[i][2])
         strokeWidth = 5
         position = keys.index(labels_text[i])
-        key = values[ii_list[i]]
+        key = values[position]
         print(key)
         # print("Oye yahi toh key haiiiii\n\n", key)
         stroke = str(rgb_to_hex(tuple(colors_out[i].astype(int))))
