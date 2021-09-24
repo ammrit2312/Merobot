@@ -76,7 +76,7 @@ def send_images(object, generate):
             # print("This is the labels\n\n", label_key-1)
             labels[label_key-1] = np.array([1.0]).astype(float)
         labels = np.array(labels)
-        labels = labels_array_generator(object)
+        #labels = labels_array_generator(object)
     elif(generate.lower() == 'specific'):
         #specific generation
         data = request.get_json(force=True)
