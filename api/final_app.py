@@ -276,6 +276,7 @@ def update_coords(process):
         
         #storing the first model rectangle pictures
         labels_used = new_labels_list
+        print("Final changed Labels", labels_used)
         new_rectangle_image(new_coords)
         masked_coord1 = masked_call(object_name,new_coords)
         remaining_parts = get_remaining_parts(object_name, labels_used)
