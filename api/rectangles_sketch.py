@@ -551,6 +551,29 @@ def arrangement(a, object_name):
     else:
       print("error")
     return a[p]
+
+def arrangement_1(a, object_name):
+    if object_name=='cow' or object_name=='sheep':
+        p = [20,22,21,23,10,11,19,18,13,12,14,16,15,17,8,9,0,7,3,4,5,6,1,2]
+    elif object_name=='bird':
+        p = [ 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23,  4, 12,  8,  9, 10, 11,5,  6,  7,  0,  1,  2,  3 ]
+    elif object_name=='person':
+        p = [ 10,11,19,22,18,21,20,23,13,16,12,15,14,17,9,0,7,8,5,6,1,2,3,4 ]
+    elif object_name=='cat':
+        p = [ 17,18,19,20,21,22,23,6, 7, 16, 8, 9, 10, 11, 12, 13, 14, 15, 0, 1, 2, 3, 4, 5]
+    elif object_name=='dog':
+        p = [ 18,19,20,21,22,23,6, 7, 16, 8, 9, 10, 11, 12, 13, 14, 15, 0, 17,1, 2, 3, 4, 5]
+    elif object_name=='horse':
+        p = [ 22,21,23,10,11,18,13,12,14,16,15,17,8,9,0,7,3,4,5,6,19,20,1,2]
+    elif object_name=='aeroplane':
+        p = [ 0,20,22,21,23,10,11,19,18,13,12,14,16,15,17,8,9,7,3,4,5,6,1,2]
+    elif object_name=='motorbike':
+        p = [ 15,20,22,21,23,10,11,19,18,13,12,14,16,17,8,9,0,7,3,4,5,6,1,2 ]
+    elif object_name=='bicycle':
+        p = [22,21,23,10,11,18,13,12,14,16,15,17,8,9,0,7,3,4,5,6,19,20,1,2 ]
+    else:
+      print("error")
+    return a[p], p
 # %%
 object_names = ['cow','sheep','bird','person','cat','dog','horse','aeroplane','motorbike','bicycle']
 
@@ -938,13 +961,15 @@ def rectangle_call(object_name,labelss,ind):
               print("Labels",label_vec_sketch)
               bbx_gen_sketch.append(((bbx )*pos)*canvas_size )
               print("BBX GENNNNN",bbx_gen_sketch)
-              mapping = arrangement(((bbx)*pos)*canvas_size, object_name)
+              bb_in, mapping = arrangement_1(((bbx)*pos)*canvas_size, object_name)
               generated_image, coords, colors_out= plot_bbx(arrangement(((bbx)*pos)*canvas_size, object_name))
               ii_list = []
               for i in range(24):
                   index = 0
-                  print(mapping)
-              print("Trial works fine", mapping)
+                  if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
+                      index = mapping[i]
+                  ii_list.append(index+1)
+              print("Trial works fine", ii_list)
               sza = 10
               plt.figure(num=None, figsize=(sza, sza))
               plt.axis('off')
