@@ -275,6 +275,7 @@ def update_coords(process):
             new_labels_list.append(dic['label'])
         
         #storing the first model rectangle pictures
+        rectangle_coords1 = new_data
         labels_used = new_labels_list
         print("Final changed Labels", labels_used)
         new_rectangle_image(new_coords)
