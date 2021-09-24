@@ -938,15 +938,13 @@ def rectangle_call(object_name,labelss,ind):
               print("Labels",label_vec_sketch)
               bbx_gen_sketch.append(((bbx )*pos)*canvas_size )
               print("BBX GENNNNN",bbx_gen_sketch)
-              bb_in, mapping = arrangement(((bbx)*pos)*canvas_size, object_name)
+              mapping = arrangement(((bbx)*pos)*canvas_size, object_name)
               generated_image, coords, colors_out= plot_bbx(arrangement(((bbx)*pos)*canvas_size, object_name))
               ii_list = []
               for i in range(24):
                   index = 0
-                  if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
-                      index = mapping[i]
-                      ii_list.append(index+1)
-              print("Trial works fine", ii_list)
+                  print(mapping)
+              print("Trial works fine", mapping)
               sza = 10
               plt.figure(num=None, figsize=(sza, sza))
               plt.axis('off')
