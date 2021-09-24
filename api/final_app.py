@@ -276,10 +276,15 @@ def update_coords(process):
 
         if(len(old_data) > len(new_data)):
             for i in old_data:
-        #         print("This is ijiiii", i)
-                 if(i not in new_data):
-                    print("This is ijiiii", rectangle_coords1.index(i))
-        #            rectangle_coords1.pop(rectangle_coords1.index(i))
+                print("This is ijiiii", i)
+                if(i not in new_data):
+                    key = i['key']
+                    count = 0
+                    for count, coor in enumerate(rectangle_coords1):
+                        if(coor['key'] == key):
+                            print("This is must key", coor['key'], key)
+                            break
+                    rectangle_coords1.pop(count)
             
         #storing the first model rectangle pictures
         labels_used = new_labels_list
