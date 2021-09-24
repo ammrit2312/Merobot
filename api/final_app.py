@@ -81,6 +81,7 @@ def send_images(object, generate):
             labels[label_key-1] = np.array([1.0]).astype(float)
         labels = np.array(labels)
     labels = labels.reshape(1,24,1)
+    print(labels)
     rectangle_coords1, labels_used , bb= rectangle_call(object,labels,ind = 2)
     bb =  np.asarray(bb)
     masked_coord1 = masked_call(object,bb)
@@ -197,6 +198,7 @@ def update_coords(process):
             x1 = x + dic['width']
             y1 = y + dic['height']
             list1 = np.array([x, y, x1, y1])
+            print("This is list1", list1, dic['label'], dic)
             if(dic['label'] not in old_labels_list):
                 #new label added
                 label_key = all_parts[dic['label']]

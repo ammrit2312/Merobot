@@ -987,11 +987,14 @@ def rectangle_call(object_name,labelss,ind):
         strokeWidth = 5
         position = keys.index(labels_text[i])
         key = values[position]
+        print(key)
         # print("Oye yahi toh key haiiiii\n\n", key)
         stroke = str(rgb_to_hex(tuple(colors_out[i].astype(int))))
         label = labels_text[i]
+        #print("huhuhuhuhu:", label, height, width, x, y)
         x = coords[i][0]
         y = coords[i][1]
+        print("huhuhuhuhu:", label, height, width, x, y)
         key_value['key'] = key
         key_value['height'] = height
         key_value['width'] = width
