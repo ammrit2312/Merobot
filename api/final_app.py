@@ -65,17 +65,6 @@ def send_images(object, generate):
     object_name = object
     if(generate.lower() == 'random'):
         #random generation
-        parts = ['head', 'reye', 'rear', 'torso', 'neck', 'tail', 'muzzle']
-        all_parts = get_all_parts_dictionary(object)
-        # for _ in range(default_size):
-        #     labels.append(np.array([0.0]).astype(float))
-        labels = [np.array([0.0]).astype(float) for i in range(default_size)]
-        for i in parts:
-            label_key = all_parts[i]
-            print("This is the labels", labels)
-            # print("This is the labels\n\n", label_key-1)
-            labels[label_key-1] = np.array([1.0]).astype(float)
-        labels = np.array(labels)
         labels = labels_array_generator(object)
     elif(generate.lower() == 'specific'):
         #specific generation
@@ -284,7 +273,12 @@ def update_coords(process):
             else:
                 new_coords[0][dic['key']-1] = list1
             new_labels_list.append(dic['label'])
-        
+
+        if(len(old_data) > len(new_data)):
+            for i in old_data:
+                if(i not in new_data):
+                    rectangle_coords1.pop(rectangle_coords1.index(i))
+            
         #storing the first model rectangle pictures
         labels_used = new_labels_list
         print("Final changed Labels", labels_used)
