@@ -930,6 +930,7 @@ def rectangle_call(object_name,labelss,ind):
   saver = tf.train.Saver()
 
   nb_epochs = 10000
+  ii_list = []
   with tf.Session() as sess:
       sess.run(tf.global_variables_initializer())
       saver.restore(sess, "./data/save_vae_custom_pair_mse.ckpt")
@@ -963,7 +964,6 @@ def rectangle_call(object_name,labelss,ind):
               print("BBX GENNNNN",bbx_gen_sketch)
               bb_in, mapping = arrangement_1(((bbx)*pos)*canvas_size, object_name)
               generated_image, coords, colors_out= plot_bbx(arrangement(((bbx)*pos)*canvas_size, object_name))
-              ii_list = []
               for i in range(24):
                   index = 0
                   if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
@@ -1017,7 +1017,7 @@ def rectangle_call(object_name,labelss,ind):
         width = abs(coords[i][0] - coords[i][2])
         strokeWidth = 5
         position = keys.index(labels_text[i])
-        key = values[position]
+        key = values[ii_list[i]]
         print(key)
         # print("Oye yahi toh key haiiiii\n\n", key)
         stroke = str(rgb_to_hex(tuple(colors_out[i].astype(int))))
