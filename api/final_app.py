@@ -10,7 +10,7 @@ from base64 import encodebytes
 from PIL import Image
 import subprocess
 
-from relations import part_labels
+from relations import part_labels, full_part_labels
 from white_model3 import white_image
 from details import add_body_parts, remove_body_parts, process
 from masked_sketch import masked_call
@@ -40,7 +40,7 @@ def send_parts(object):
     for i in all_parts:
         dict = {}
         dict['part'] = i
-        dict['full_part'] = i
+        dict['full_part'] = full_part_labels[object][i]
         output.append(dict)
     return{"parts": output}
 
@@ -93,13 +93,13 @@ def send_images(object, generate):
     for i in labels_used:
         dict = {}
         dict['part'] = i
-        dict['full_part'] = i
+        dict['full_part'] = full_part_labels[object][i]
         dict['color'] = next(item for item in rectangle_coords1 if item["label"] == i)
         out_labels_used.append(dict)
     for i in remaining_parts:
         dict = {}
         dict['part'] = i
-        dict['full_part'] = i
+        dict['full_part'] = full_part_labels[object][i]
         out_remianing_parts.append(dict)
     if(object in animals):
         return{
@@ -285,13 +285,13 @@ def update_coords(process):
     for i in labels_used:
         dict = {}
         dict['part'] = i
-        dict['full_part'] = i
+        dict['full_part'] = full_part_labels[object_name][i]
         dict['color'] = next(item for item in rectangle_coords1 if item["label"] == i)
         out_labels_used.append(dict)
     for i in remaining_parts:
         dict = {}
         dict['part'] = i
-        dict['full_part'] = i
+        dict['full_part'] = full_part_labels[object_name][i]
         out_remianing_parts.append(dict)
     return{
         'images': [
