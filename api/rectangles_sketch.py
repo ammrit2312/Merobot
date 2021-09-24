@@ -968,7 +968,7 @@ def rectangle_call(object_name,labelss,ind):
                   index = 0
                   if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
                       index = mapping[i]
-                  ii_list.append(index+1)
+                      ii_list.append(index+1)
               print("Trial works fine", ii_list)
               sza = 10
               plt.figure(num=None, figsize=(sza, sza))
