@@ -12,7 +12,6 @@ import subprocess
 
 from relations import part_labels, full_part_labels
 from white_model3 import white_image
-# from details import add_body_parts, remove_body_parts, process
 from masked_sketch import masked_call
 from rectangles_sketch import object_list, class_dic, rectangle_call, animals
 from helper import get_response_image, colors, labels_array_generator, clvec_generator, new_rectangle_image, get_all_parts, get_all_parts_dictionary, get_remaining_parts
