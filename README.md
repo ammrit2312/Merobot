@@ -17,3 +17,8 @@
         <li><strong>white_model3.py: </strong>As model 3 generates picture with black background thus, we change the color of background to white using this file.</li>
     </ul>
 </ul>
+
+## How to run the BackEnd
+```
+python3 app.py
+```
