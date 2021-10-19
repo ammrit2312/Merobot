@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 
 from relations import part_labels
 from white_model3 import white_image
-from details import add_body_parts, remove_body_parts, process
+# from details import add_body_parts, remove_body_parts, process
 from rectangles_sketch import object_list, class_dic, rectangle_call, animals
 import io
 from base64 import encodebytes
