@@ -12,7 +12,7 @@ import subprocess
 
 from relations import part_labels, full_part_labels
 from white_model3 import white_image
-from details import add_body_parts, remove_body_parts, process
+# from details import add_body_parts, remove_body_parts, process
 from masked_sketch import masked_call
 from rectangles_sketch import object_list, class_dic, rectangle_call, animals
 from helper import get_response_image, colors, labels_array_generator, clvec_generator, new_rectangle_image, get_all_parts, get_all_parts_dictionary, get_remaining_parts
@@ -76,12 +76,9 @@ def send_images(object, generate):
         labels = [np.array([0.0]).astype(float) for i in range(default_size)]
         for i in parts:
             label_key = all_parts[i]
-            print("This is the labels", labels)
-            # print("This is the labels\n\n", label_key-1)
             labels[label_key-1] = np.array([1.0]).astype(float)
         labels = np.array(labels)
     labels = labels.reshape(1,24,1)
-    print(labels)
     rectangle_coords1, labels_used , bb= rectangle_call(object,labels,ind = 2)
     bb =  np.asarray(bb)
     masked_coord1 = masked_call(object,bb)
@@ -198,7 +195,6 @@ def update_coords(process):
             x1 = x + dic['width']
             y1 = y + dic['height']
             list1 = np.array([x, y, x1, y1])
-            print("This is list1", list1, dic['label'], dic)
             if(dic['label'] not in old_labels_list):
                 #new label added
                 label_key = all_parts[dic['label']]
@@ -276,19 +272,16 @@ def update_coords(process):
 
         if(len(old_data) > len(new_data)):
             for i in old_data:
-                print("This is ijiiii", i)
                 if(i not in new_data):
                     key = i['key']
                     count = 0
                     for count, coor in enumerate(rectangle_coords1):
                         if(coor['key'] == key):
-                            print("This is must key", coor['key'], key)
                             break
                     rectangle_coords1.pop(count)
             
         #storing the first model rectangle pictures
         labels_used = new_labels_list
-        print("Final changed Labels", labels_used)
         new_rectangle_image(new_coords)
         masked_coord1 = masked_call(object_name,new_coords)
         remaining_parts = get_remaining_parts(object_name, labels_used)

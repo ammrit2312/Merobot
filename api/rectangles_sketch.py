@@ -500,7 +500,6 @@ def plot_bbx(bbx):
         if [x_minp, y_minp,x_maxp , y_maxp]!=[0,0,0,0]:
             # position = values.index(i) #(24-len(labels_passed))
             # labels.append(keys[position])
-            print(i)
             colors_output.append(colors[i])
             coordinates.append([x_minp, y_minp,x_maxp , y_maxp])
             cv2.rectangle(canvas, (int(x_minp), int(y_minp)), (int(x_maxp) , int(y_maxp) ), colors[i], 6)
@@ -602,7 +601,6 @@ for i in part_labels:
 
 # %%
 def rectangle_call(object_name,labelss,ind):
-  print("Its runnning")
   #file_name = object_name+'_'+str(file_number)+'.png'
   out = []
   class_vec_sketch = []
@@ -959,9 +957,7 @@ def rectangle_call(object_name,labelss,ind):
           for bbx,pos,classix in zip(lpv, labelss,clvec):
               class_vec_sketch.append(classix)
               label_vec_sketch.append(pos)
-              print("Labels",label_vec_sketch)
               bbx_gen_sketch.append(((bbx )*pos)*canvas_size )
-              print("BBX GENNNNN",bbx_gen_sketch)
               bb_in, mapping = arrangement_1(((bbx)*pos)*canvas_size, object_name)
               generated_image, coords, colors_out= plot_bbx(arrangement(((bbx)*pos)*canvas_size, object_name))
               for i in range(24):
@@ -969,12 +965,10 @@ def rectangle_call(object_name,labelss,ind):
                   if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
                       index = mapping[i]
                       ii_list.append(index+1)
-              print("Trial works fine", ii_list)
               sza = 10
               plt.figure(num=None, figsize=(sza, sza))
               plt.axis('off')
               plt.imshow(generated_image)
-              print("Coords",coords)
               
               plt.savefig('rectangle.png')
               im = Image.open(r"rectangle.png")
@@ -1012,7 +1006,6 @@ def rectangle_call(object_name,labelss,ind):
       for i_read in range(len(ii_list)):
           position = values.index(ii_list[i_read])
           labels_text.append(keys[position])
-      print(labels_text)
     #   scale_factor = (coords[len(coords)-1][2] - coords[0][0])/coords[len(coords)-1][2]
       for i in range(len(coords)):
         key_value = {}
@@ -1021,14 +1014,10 @@ def rectangle_call(object_name,labelss,ind):
         strokeWidth = 5
         position = keys.index(labels_text[i])
         key = values[position]
-        print(key)
-        # print("Oye yahi toh key haiiiii\n\n", key)
         stroke = str(rgb_to_hex(tuple(colors_out[i].astype(int))))
         label = labels_text[i]
-        #print("huhuhuhuhu:", label, height, width, x, y)
         x = coords[i][0]
         y = coords[i][1]
-        print("huhuhuhuhu:", label, height, width, x, y)
         key_value['key'] = key
         key_value['height'] = height
         key_value['width'] = width

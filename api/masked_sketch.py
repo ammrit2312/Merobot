@@ -49,14 +49,9 @@ def bounder(img):
 #%%
 def add_images(canvas,img, ii):
     result = np.where(img!=0)
-    # print("MAAL", result)
     listOfCoordinates = list(zip(result[0], result[1]))
-    # print("----------------")
-    # print("List of Coordinates yhii hai\n", listOfCoordinates)
-    # print("----------------")
     print("Value of ii --> ", ii)
     for cord in listOfCoordinates:
-        # print('MAAL ke Andar ka MAAL', cord, canvas[cord])
         canvas[cord] = ii
     return canvas
 
@@ -358,7 +353,6 @@ def masked_call(object,bb):
     sess.run(tf.global_variables_initializer())
     saver.restore(sess, "./data/save_bitmaps_colab_new.ckpt")
     start = 0
-    print("BBX GENNNNN in masked call", bb)
     for ind_ in range(len(bb)//batch_size):
 
       start_idx = ind_*batch_size
@@ -370,7 +364,6 @@ def masked_call(object,bb):
           np.random.seed(2)
           z = np.random.normal(0,1,[batch_size, 64])
           mx= sess.run([pred_masks],feed_dict= {z_latent:z,cond_bbxs: b_in/canvas_size, cond_classes:c_in})
-          print("BBX GENNNNN mx", mx[0].shape)
           images= []
           for j in range(batch_size):
               canvas = np.zeros((canvas_size, canvas_size), dtype= 'float32')
@@ -379,7 +372,6 @@ def masked_call(object,bb):
               bb_in, mmx, mapping = arrangement(b_in[j], mx[0][j], class_dic[np.argmax(c_in)])
               
             #   try:
-              #print("This is bb_in", bb_in)
               for i in range(24):
                   index = 0
                   if((bb_in[i] != np.array([0, 0, 0, 0])).all()):
@@ -390,14 +382,12 @@ def masked_call(object,bb):
                   if(y_min > y_max):
                     y_max, y_min = y_min, y_max
                   if x_max-x_min >=1 and y_max-y_min>=1:
-                      print("This is final i", i)
                       x, y = canvas[ int(y_min):int(y_max), int(x_min):int(x_max) ].shape
                       canvas[ int(y_min):int(y_max), int(x_min):int(x_max) ] = add_images(canvas[ int(y_min):int(y_max), int(x_min):int(x_max)  ],cv2.resize(bounder(np.squeeze(mmx[i]))*(i+1), (y,x)), i+1)
                       ii_list.append(index+1)
                       canvas_ii_list.append(i+1)
             #   except:
             #       print('no problem')
-              print("--------------------------------------------")
               #file_name = object+'_'+str(file_number)+'.png'
               cv2.imwrite("canvas.jpg", canvas)
               final_coords = []
@@ -412,11 +402,9 @@ def masked_call(object,bb):
               width, height = im.size
               im1 = im.crop((250, 250, width-220, height-220))
               im1.save("./masked.png")
-            #   print("Object List yo yoy o", object_list)
               for i in ii_list:
                 key_value = {}
                 result = np.where(canvas == canvas_ii_list[ii_list.index(i)])
-                # print("Life kharab hai \n\n\n",type(result[0][0]))
                 out = []
                 for me in result:
                     out1 = []
@@ -425,7 +413,6 @@ def masked_call(object,bb):
                     out.append(out1)
                 result = out
                 out = []
-                # print("I is printed here", i)
                 # color = str(rgb_to_hex((int(label_to_color[i][0]*255), int(label_to_color[i][1]*255), int(label_to_color[i][2]*255))))
                 # labels_text = []
                 labels_main = part_labels[object]
@@ -440,8 +427,6 @@ def masked_call(object,bb):
                 stroke = str(rgb_to_hex((int(label_to_color[color_i][0]*255), int(label_to_color[color_i][1]*255), int(label_to_color[color_i][2]*255))))
                 fill = str(rgb_to_hex((int(label_to_color[color_i][0]*255), int(label_to_color[color_i][1]*255), int(label_to_color[color_i][2]*255))))
                 key = i
-                #remove later
-                print("This is the len of out", len(out))
                 key_value["points"] = out
                 key_value["label"] = label
                 key_value["closed"] = closed
@@ -454,8 +439,6 @@ def masked_call(object,bb):
             #   img = Image.open("./masked_1.png")
             #   img = img.resize((700, 700), Image.ANTIALIAS)
             #   img.save("masked.png")
-              print(r)
-    print(final_coords)
     return final_coords
 
 #%%
