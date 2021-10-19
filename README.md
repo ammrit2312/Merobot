@@ -20,5 +20,6 @@
 
 ## How to run the BackEnd
 ```
+cd api
 python3 app.py
 ```
