@@ -18,6 +18,10 @@
     </ul>
 </ul>
 
+## Requirements
+<strong>Python Version: </strong> python-3.6.13<br/>
+
+
 ## How to run the BackEnd
 ```
 cd api
