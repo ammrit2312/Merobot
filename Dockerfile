@@ -1,34 +1,19 @@
-# FROM nvcr.io/nvidia/cuda
-FROM nvidia/cuda:10.1-cudnn7-runtime
+FROM python:3.6-buster
 
-RUN apt update && \
-    apt install --no-install-recommends -y build-essential software-properties-common && \
-    add-apt-repository -y ppa:deadsnakes/ppa && \
-    apt install --no-install-recommends -y python3.6 python3-pip python3-setuptools python3-distutils && \
-    apt clean && rm -rf /var/lib/apt/lists/*
-
-#installing python3
-# RUN apt update
-# RUN apt install software-properties-common
-# RUN add-apt-repository ppa:deadsnakes/ppa
-# RUN apt update
-# RUN apt-get install python3.6
-
-
-
-# setting working directory
 RUN mkdir -p /usr/src
 WORKDIR /usr/src
 
 COPY ./api /usr/src
 
-# setting python 
+# SET PYTHON
 RUN python3 -m pip install --upgrade pip
 RUN pip3 install virtualenv
 RUN virtualenv merobot_backend
 RUN . merobot_backend/bin/activate
 
 # install dependencies 
+RUN pip3 install IPython
+RUN pip3 install scikit-image
 RUN pip3 install wheel
 RUN pip3 install Flask
 RUN pip3 install Flask-Cors
@@ -39,13 +24,8 @@ RUN apt-get update
 RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN pip3 install opencv-python
 RUN pip3 install matplotlib
-RUN pip3 install tensorflow-gpu==1.15
+RUN pip3 install tensorflow==1.15
+#RUN python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl
 
 #RUN Python
 CMD ["python3", "app.py"]
-EXPOSE 8080
-
-
-
-# FROM tensorflow/tensorflow:latest-gpu-jupyter
-# https://towardsdatascience.com/a-complete-guide-to-building-a-docker-image-serving-a-machine-learning-system-in-production-d8b5b0533bde
