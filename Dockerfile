@@ -25,6 +25,8 @@ RUN apt-get install ffmpeg libsm6 libxext6  -y
 RUN pip3 install opencv-python
 RUN pip3 install matplotlib
 RUN pip3 install tensorflow==1.15
+RUN pip3 install torch torchvision
+RUN pip3 install dill dominate
 #RUN python3 -m pip install --upgrade https://storage.googleapis.com/tensorflow/mac/cpu/tensorflow-0.12.0-py3-none-any.whl
 
 #RUN Python
