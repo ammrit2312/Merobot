@@ -20,7 +20,7 @@
 
 ## Instructions
 <ul>
-    <li>Unzip the ```code.zip``` file before starting the work.</li>
+    <li>Unzip the `code.zip` file before starting the work.</li>
     <li>Make sure to follow the requirements for proper functioning of the app</li>
     <li>For the third model to run, please use a GPU supported machine</li>
     <li>Project uses tensorflow v1.x and hence it should be installed in the system</li>
