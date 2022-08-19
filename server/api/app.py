@@ -1,3 +1,4 @@
+#imports
 from flask.json import jsonify
 from flask import Flask, request
 from flask_cors import CORS
@@ -10,15 +11,18 @@ from base64 import encodebytes
 from PIL import Image
 import subprocess
 
+# imports from modules
 from relations import part_labels, full_part_labels
 from white_model3 import white_image
 from masked_sketch import masked_call
 from rectangles_sketch import object_list, class_dic, rectangle_call, animals
 from helper import get_response_image, colors, labels_array_generator, clvec_generator, new_rectangle_image, get_all_parts, get_all_parts_dictionary, get_remaining_parts
 
+# backend initialization
 app = Flask(__name__)
 CORS(app)
 
+# global variables
 default_size = 24
 object_name = ''
 rectangle_coords1 = []
@@ -27,7 +31,7 @@ remaining_parts = []
 masked_coord1 = []
 labels= []
 
-
+# routes
 @app.route("/")
 def home():
     return "<h1>Server Working</h1>"
