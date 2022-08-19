@@ -1,4 +1,8 @@
 # Merobot Backend
+The following document contains the information about all the backend setup for `Merobot`.
+
+# Table of Contents
+1. [Installation](#Installation-Instructions)
 
 ## The File Structure:
 <ul>
@@ -36,3 +40,4 @@
 cd api
 python3 app.py
 ```
+
