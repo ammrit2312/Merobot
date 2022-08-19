@@ -1,11 +1,10 @@
-# Merobot rontend
+# Merobot Frontend
 The following document contains the information about all the Frontend setup for `Merobot`.
 
 # Table of Contents
-1. [Specific Requirements](#Specific-Requirements)
-2. [Installation](#Installation-Instructions)
-3. [File Structure](#File-Structure)
-4. [Contact](#Contact)
+1. [Installation](#Running-the-application-in-Development)
+2. [File Structure](#File-Structure)
+3. [Contact](#Contact)
 
 # Running the application in Development
 
