@@ -1,0 +1,111 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  z-index: 10;
+}
+
+.sideBar {
+  height: 500px;
+  margin: 5vh 0 0 2vw;
+  background-color: floralwhite;
+  width: 300px;
+  padding: 30px;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+
+.sideBar::-webkit-scrollbar {
+  width: 10px; /* width of the entire scrollbar */
+}
+.sideBar::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+.sideBar::-webkit-scrollbar-thumb {
+  background-color: black; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid white; /*creates padding around scroll thumb*/
+}
+
+.optionIcons {
+  transform: scale(2);
+  border: 1px solid black;
+  padding: 2px;
+  border-radius: 3px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.5);
+}
+
+.input {
+  margin: 0 0 25px 0px;
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  align-items: center;
+
+}
+
+.optionIcons:hover {
+  cursor: pointer;
+}
+
+.remaining{
+  column-count: 2;
+}
+
+.imgContainer {
+  margin: 6.3vh 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+}
+
+.imgContainer img {
+  background-color: white;
+  height: 100px;
+  width: 100px;
+  border: 2px black solid;
+  padding: 5px;
+  margin: 2px;
+  border-radius: 10px;
+}
+
+/* .imgContainer img {
+  height: 70px;
+  width: 70px;
+  border: 2px black solid;
+  padding: 5px;
+  margin: 2px;
+} */
+
+.Button {
+  padding: 15px 30px;
+  background-color: darkturquoise;
+  border-radius: 10px;
+  color: aliceblue;
+  font-weight: 700;
+  cursor: pointer;
+  margin: 20px;
+  text-align: center;
+  /* border: 1px solid green; */
+}
+
+.Table, th, td{
+  border: 1px solid black;
+}
+.Table{
+  margin: 10px;
+  margin-left: 0;
+  width: 100%;
+  border-collapse: collapse;
+}
+/* .Td{
+  background-color: var(--main-color);
+} */

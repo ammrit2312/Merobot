@@ -1,0 +1,33 @@
+.Container {
+  /* border: 1px red solid; */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--gutter);
+  height: var(--nav-height);
+}
+
+.logo {
+  /* border: 1px yellow solid; */
+  cursor: pointer;
+} 
+
+.CollegeLogo{
+  max-height: calc(var(--nav-height) - 7px);
+}
+
+.linksContainer {
+  /* border: 1px black solid; */
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  padding: 0 2vw;
+  cursor: pointer;
+  /* border: 1px green solid; */
+}
+
+.links:hover {
+  font-weight: 700 ;
+}
