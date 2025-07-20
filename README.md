@@ -1,6 +1,6 @@
 # Merobot
 
-This repository includes frontend and backend for merobot project, which aims to create images using Machine Learning, taking body parts as parameter. For the model and the parameters for this please contact https://www.iiit.ac.in/faculty/~ravi.kiran
+This repository includes frontend and backend for merobot project, which aims to create images using Machine Learning, taking body parts as parameter. For the model and the parameters please contact https://www.iiit.ac.in/faculty/~ravi.kiran
 
 ## File Structure
 
